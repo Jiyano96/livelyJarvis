@@ -1,0 +1,412 @@
+{
+    "editMode": {
+        "type": "checkbox",
+        "text": "Edit Mode (Show Hitboxes)",
+        "value": false
+    },
+    "backgroundImage": {
+        "type": "folderDropdown",
+        "text": "Background Image",
+        "value": "default.jpg",
+        "folder": "images",
+        "filter": "*.jpg|*.jpeg|*.png|*.webp|*.gif"
+    },
+    "slot1_active": {
+        "type": "checkbox",
+        "text": "Slot 1: Active",
+        "value": true
+    },
+    "slot1_char": {
+        "type": "folderDropdown",
+        "text": "Slot 1: Character (Select idle.gif)",
+        "value": "assets/characters/Wizard/idle.gif",
+        "folder": "assets/characters",
+        "filter": "idle.gif"
+    },
+    "slot1_x": {
+        "type": "slider",
+        "text": "Slot 1: Position X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 20
+    },
+    "slot1_y": {
+        "type": "slider",
+        "text": "Slot 1: Position Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 50
+    },
+    "slot1_scale": {
+        "type": "slider",
+        "text": "Slot 1: Scale",
+        "min": 0.5,
+        "max": 5.0,
+        "step": 0.1,
+        "value": 1.0
+    },
+    "slot1_webhook": {
+        "type": "textbox",
+        "text": "Slot 1: Webhook URL",
+        "value": ""
+    },
+    "slot1_statusUrl": {
+        "type": "textbox",
+        "text": "Slot 1: Status Endpoint (JSON)",
+        "value": ""
+    },
+    "slot1_statusPollMs": {
+        "type": "slider",
+        "text": "Slot 1: Status Polling (ms)",
+        "min": 500,
+        "max": 10000,
+        "step": 250,
+        "value": 3000
+    },
+    "slot1_statusTimeoutMs": {
+        "type": "slider",
+        "text": "Slot 1: Status Timeout (ms)",
+        "min": 5000,
+        "max": 120000,
+        "step": 5000,
+        "value": 60000
+    },
+    "slot1_moveEnabled": {
+        "type": "checkbox",
+        "text": "Slot 1: Movement Enabled",
+        "value": false
+    },
+    "slot1_moveTargetX": {
+        "type": "slider",
+        "text": "Slot 1: Move Target X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 60
+    },
+    "slot1_moveTargetY": {
+        "type": "slider",
+        "text": "Slot 1: Move Target Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 40
+    },
+    "slot1_moveIntervalMs": {
+        "type": "slider",
+        "text": "Slot 1: Move Interval (ms)",
+        "min": 1000,
+        "max": 300000,
+        "step": 1000,
+        "value": 60000
+    },
+    "slot1_moveDurationMs": {
+        "type": "slider",
+        "text": "Slot 1: Move Duration (ms)",
+        "min": 500,
+        "max": 60000,
+        "step": 500,
+        "value": 8000
+    },
+    "slot2_active": {
+        "type": "checkbox",
+        "text": "Slot 2: Active",
+        "value": true
+    },
+    "slot2_char": {
+        "type": "folderDropdown",
+        "text": "Slot 2: Character (Select idle.gif)",
+        "value": "assets/characters/SynthEngineer/idle.gif",
+        "folder": "assets/characters",
+        "filter": "idle.gif"
+    },
+    "slot2_x": {
+        "type": "slider",
+        "text": "Slot 2: Position X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 65
+    },
+    "slot2_y": {
+        "type": "slider",
+        "text": "Slot 2: Position Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 55
+    },
+    "slot2_scale": {
+        "type": "slider",
+        "text": "Slot 2: Scale",
+        "min": 0.5,
+        "max": 5.0,
+        "step": 0.1,
+        "value": 1.0
+    },
+    "slot2_webhook": {
+        "type": "textbox",
+        "text": "Slot 2: Webhook URL",
+        "value": ""
+    },
+    "slot2_statusUrl": {
+        "type": "textbox",
+        "text": "Slot 2: Status Endpoint (JSON)",
+        "value": ""
+    },
+    "slot2_statusPollMs": {
+        "type": "slider",
+        "text": "Slot 2: Status Polling (ms)",
+        "min": 500,
+        "max": 10000,
+        "step": 250,
+        "value": 3000
+    },
+    "slot2_statusTimeoutMs": {
+        "type": "slider",
+        "text": "Slot 2: Status Timeout (ms)",
+        "min": 5000,
+        "max": 120000,
+        "step": 5000,
+        "value": 60000
+    },
+    "slot2_moveEnabled": {
+        "type": "checkbox",
+        "text": "Slot 2: Movement Enabled",
+        "value": false
+    },
+    "slot2_moveTargetX": {
+        "type": "slider",
+        "text": "Slot 2: Move Target X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 75
+    },
+    "slot2_moveTargetY": {
+        "type": "slider",
+        "text": "Slot 2: Move Target Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 60
+    },
+    "slot2_moveIntervalMs": {
+        "type": "slider",
+        "text": "Slot 2: Move Interval (ms)",
+        "min": 1000,
+        "max": 300000,
+        "step": 1000,
+        "value": 60000
+    },
+    "slot2_moveDurationMs": {
+        "type": "slider",
+        "text": "Slot 2: Move Duration (ms)",
+        "min": 500,
+        "max": 60000,
+        "step": 500,
+        "value": 8000
+    },
+    "slot3_active": {
+        "type": "checkbox",
+        "text": "Slot 3: Active",
+        "value": true
+    },
+    "slot3_char": {
+        "type": "folderDropdown",
+        "text": "Slot 3: Character (Select idle.gif)",
+        "value": "assets/characters/ChronoRanger/idle.gif",
+        "folder": "assets/characters",
+        "filter": "idle.gif"
+    },
+    "slot3_x": {
+        "type": "slider",
+        "text": "Slot 3: Position X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 80
+    },
+    "slot3_y": {
+        "type": "slider",
+        "text": "Slot 3: Position Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 60
+    },
+    "slot3_scale": {
+        "type": "slider",
+        "text": "Slot 3: Scale",
+        "min": 0.5,
+        "max": 5.0,
+        "step": 0.1,
+        "value": 1.0
+    },
+    "slot3_webhook": {
+        "type": "textbox",
+        "text": "Slot 3: Webhook URL",
+        "value": ""
+    },
+    "slot3_statusUrl": {
+        "type": "textbox",
+        "text": "Slot 3: Status Endpoint (JSON)",
+        "value": ""
+    },
+    "slot3_statusPollMs": {
+        "type": "slider",
+        "text": "Slot 3: Status Polling (ms)",
+        "min": 500,
+        "max": 10000,
+        "step": 250,
+        "value": 3000
+    },
+    "slot3_statusTimeoutMs": {
+        "type": "slider",
+        "text": "Slot 3: Status Timeout (ms)",
+        "min": 5000,
+        "max": 120000,
+        "step": 5000,
+        "value": 60000
+    },
+    "slot3_moveEnabled": {
+        "type": "checkbox",
+        "text": "Slot 3: Movement Enabled",
+        "value": false
+    },
+    "slot3_moveTargetX": {
+        "type": "slider",
+        "text": "Slot 3: Move Target X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 20
+    },
+    "slot3_moveTargetY": {
+        "type": "slider",
+        "text": "Slot 3: Move Target Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 45
+    },
+    "slot3_moveIntervalMs": {
+        "type": "slider",
+        "text": "Slot 3: Move Interval (ms)",
+        "min": 1000,
+        "max": 300000,
+        "step": 1000,
+        "value": 60000
+    },
+    "slot3_moveDurationMs": {
+        "type": "slider",
+        "text": "Slot 3: Move Duration (ms)",
+        "min": 500,
+        "max": 60000,
+        "step": 500,
+        "value": 8000
+    },
+    "slot4_active": {
+        "type": "checkbox",
+        "text": "Slot 4: Active",
+        "value": true
+    },
+    "slot4_char": {
+        "type": "folderDropdown",
+        "text": "Slot 4: Character (Select idle.gif)",
+        "value": "assets/characters/Wizard/idle.gif",
+        "folder": "assets/characters",
+        "filter": "idle.gif"
+    },
+    "slot4_requiresText": {
+        "type": "checkbox",
+        "text": "Slot 4: Requires Text Input",
+        "value": true
+    },
+    "slot4_textPlaceholder": {
+        "type": "textbox",
+        "text": "Slot 4: Text Placeholder",
+        "value": "Was soll ich sagen?"
+    },
+    "slot4_speechDurationMs": {
+        "type": "slider",
+        "text": "Slot 4: Speech Duration (ms)",
+        "min": 2000,
+        "max": 15000,
+        "step": 500,
+        "value": 6000
+    },
+    "slot4_x": {
+        "type": "slider",
+        "text": "Slot 4: Position X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 20
+    },
+    "slot4_y": {
+        "type": "slider",
+        "text": "Slot 4: Position Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 75
+    },
+    "slot4_scale": {
+        "type": "slider",
+        "text": "Slot 4: Scale",
+        "min": 0.5,
+        "max": 5.0,
+        "step": 0.1,
+        "value": 1.0
+    },
+    "slot4_webhook": {
+        "type": "textbox",
+        "text": "Slot 4: Webhook URL",
+        "value": ""
+    },
+    "slot4_statusUrl": {
+        "type": "textbox",
+        "text": "Slot 4: Status Endpoint (JSON)",
+        "value": ""
+    },
+    "slot4_statusPollMs": {
+        "type": "slider",
+        "text": "Slot 4: Status Polling (ms)",
+        "min": 500,
+        "max": 10000,
+        "step": 250,
+        "value": 3000
+    },
+    "slot4_statusTimeoutMs": {
+        "type": "slider",
+        "text": "Slot 4: Status Timeout (ms)",
+        "min": 5000,
+        "max": 120000,
+        "step": 5000,
+        "value": 60000
+    },
+    "slot4_moveEnabled": {
+        "type": "checkbox",
+        "text": "Slot 4: Movement Enabled",
+        "value": true
+    },
+    "slot4_moveTargetX": {
+        "type": "slider",
+        "text": "Slot 4: Move Target X (%)",
+        "min": 0,
+        "max": 100,
+        "value": 65
+    },
+    "slot4_moveTargetY": {
+        "type": "slider",
+        "text": "Slot 4: Move Target Y (%)",
+        "min": 0,
+        "max": 100,
+        "value": 80
+    },
+    "slot4_moveIntervalMs": {
+        "type": "slider",
+        "text": "Slot 4: Move Interval (ms)",
+        "min": 1000,
+        "max": 300000,
+        "step": 1000,
+        "value": 60000
+    },
+    "slot4_moveDurationMs": {
+        "type": "slider",
+        "text": "Slot 4: Move Duration (ms)",
+        "min": 500,
+        "max": 60000,
+        "step": 500,
+        "value": 8000
+    }
+}

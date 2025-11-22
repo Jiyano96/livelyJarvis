@@ -1,0 +1,107 @@
+# Pixel Art Assets - Beschaffungsplan
+
+## Problem
+Die KI-basierten Asset-Generierungs-Tools sind derzeit nicht verfügbar:
+- PixelLab MCP: Verbindungsprobleme
+- Image Generation: Quota erschöpft (Reset in ~3,5 Stunden)
+
+## Lösungsansätze
+
+### Option 1: Freie Pixel Art Ressourcen (Empfohlen)
+
+#### Character Sprites
+Hochwertige, kostenlose Quellen für Pixel Art Characters:
+
+1. **itch.io** - Riesige Sammlung kostenloser Pixel Art Assets
+   - [Character Sprites](https://itch.io/game-assets/free/tag-characters+pixel-art)
+   - [Wizard Characters](https://itch.io/game-assets/free/tag-wizard+pixel-art)
+   - Such nach: "wizard pixel art sprite" oder "top-down character"
+
+2. **OpenGameArt.org**
+   - [Character Section](https://opengameart.org/art-search?keys=wizard)
+   - Lizenz: meist CC0 oder CC-BY
+
+3. **Kenney Assets**
+   - [kenney.nl](https://kenney.nl/assets) - Hochqualitative Assets, CC0
+   - Top-Down Tanks & Character Packs
+
+#### UI Elements (Overlay Icons)
+
+1. **Game-icons.net**
+   - [Hourglass Icons](https://game-icons.net/tags/hourglass.html)
+   - [Checkmark Icons](https://game-icons.net/tags/check.html)
+   - Als SVG downloadbar, in PNG konvertieren
+
+2. **IconFinder** (Free Section)
+   - Pixel art style icons
+
+### Option 2: Einfache Placeholder Assets erstellen
+
+Ich kann **CSS-basierte** Placeholder erstellen:
+- Farbige Quadrate/Kreise als temporäre Characters
+- CSS-animierte Icons für Hourglass/Checkmark
+- Gradient-Backgrounds
+
+### Option 3: Warten auf Quota-Reset
+
+In **~3,5 Stunden** (um 15:58 Uhr) kann ich die Assets mit AI generieren.
+
+## Empfohlene Vorgehensweise
+
+### Sofort: Placeholder System
+1. ✅ CSS-basierte Placeholder Characters (farbige Shapes)
+2. ✅ CSS-animierte UI Icons
+3. ✅ Gradient Background
+4. ✅ System funktionsfähig machen
+
+### Dann: Assets hinzufügen
+1. Du kannst Assets von itch.io/OpenGameArt downloaden
+2. Oder warten bis Image Generation verfügbar ist
+3. Assets einfach in die Ordner legen:
+   ```
+   assets/characters/Wizard/
+   ├── idle.gif
+   ├── loading.gif
+   ├── success.gif
+   └── error.gif
+   
+   assets/ui/
+   ├── hourglass.gif
+   └── checkmark.gif
+   
+   images/
+   └── default.jpg
+   ```
+
+## Asset-Anforderungen
+
+### Character Sprites
+- **Format**: GIF (animiert) oder PNG (statisch)
+- **Größe**: 48x48 bis 128x128 Pixel (wird via CSS skaliert)
+- **Stil**: Top-down Perspektive, Pixel Art
+- **Benötigt**:
+  - `idle.gif` - Stehende/atmende Animation
+  - `loading.gif` - Optionale Casting/Aktions-Animation
+  - Falls nicht vorhanden: idle.gif wird als Fallback genutzt
+
+### UI Overlays
+- **Format**: GIF (animiert) oder PNG (statisch)
+- **Größe**: 32x32 oder 64x64 Pixel
+- **Transparenter Hintergrund**
+- **Benötigt**:
+  - `hourglass.gif` - Sanduhr (während Webhook läuft)
+  - `checkmark.gif` - Haken (bei Erfolg)
+
+### Background
+- **Format**: JPG oder PNG
+- **Größe**: 1920x1080 oder höher
+- **Stil**: Fantasy/Tech themed (passend zu n8n)
+
+## Nächste Schritte
+
+Soll ich:
+1. **Placeholder-System** mit CSS erstellen (sofort lauffähig)?
+2. **Links zu Asset-Packs** sammeln (du wählst dann aus)?
+3. **Warten** bis Image Generation wieder verfügbar ist?
+
+Was bevorzugst du?

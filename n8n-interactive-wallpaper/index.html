@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Gamified n8n Wallpaper</title>
+</head>
+
+<body>
+    <div id="background" class="background"></div>
+    <button id="settings-button" class="settings-button" aria-label="Einstellungen">
+        <img src="assets/ui/settings.gif" alt="Settings">
+    </button>
+    <div id="settings-panel" class="settings-panel hidden">
+        <div class="settings-header">
+            <span>Wallpaper Settings</span>
+            <button id="settings-close" aria-label="Schließen">
+                ✕
+            </button>
+        </div>
+        <div id="settings-content" class="settings-content">
+            <p>Dieses Panel zeigt alle verfügbaren Lively-Properties. Es wird automatisch befüllt, sobald Lively Werte sendet.</p>
+            <div id="settings-empty" class="settings-empty">Noch keine Properties empfangen.</div>
+            <div id="settings-list"></div>
+        </div>
+    </div>
+    <div id="widgets-container"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

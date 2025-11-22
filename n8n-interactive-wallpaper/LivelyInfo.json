@@ -1,0 +1,14 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "n8n Control Center",
+  "Thumbnail": "thumbnail.jpg",
+  "Preview": "thumbnail.jpg",
+  "Desc": "Interactive wallpaper to trigger n8n automations.",
+  "Author": "User",
+  "License": "",
+  "Contact": "",
+  "Type": "web",
+  "FileName": "index.html",
+  "Arguments": "",
+  "IsAbsolutePath": false
+}
