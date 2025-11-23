@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castle Automations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="scene" aria-label="Castle workflow board">
+        <img src="assets/castlebg.png" alt="Pixel art castle interior" class="scene-bg" draggable="false">
+        <div id="widgets-layer" aria-live="polite">
+            <button id="mail-widget" class="widget widget-mail" type="button" aria-label="Dispatch castle mail"
+                data-state="idle">
+                <img src="assets/mail/Mail1.png" alt="Castle mail courier" class="mail-frame" draggable="false">
+
+            </button>
+
+            <article id="notes-widget" class="widget widget-notes" aria-label="Royal notes module" data-state="idle">
+                <img src="assets/Notes.png" alt="Pinned parchment" class="notes-art" draggable="false">
+                <div class="notes-body">
+                    <label for="notes-input">Royal Notes</label>
+                    <textarea id="notes-input" rows="3" placeholder="Drop a royal note"></textarea>
+                    <div class="notes-actions">
+                        <button id="notes-send" type="button">Send Scroll</button>
+                        <span class="note-hint">Shift+Enter = newline</span>
+                    </div>
+                </div>
+            </article>
+
+            <button id="settings-toggle" class="widget widget-settings" type="button" aria-expanded="false"
+                aria-controls="settings-panel" aria-label="Open wallpaper settings" data-state="idle">
+                <img src="assets/settings/Settings1.png" alt="Castle settings glyph" draggable="false">
+                <span class="widget-label">Glyph Console</span>
+            </button>
+
+            <button id="knight-widget" class="widget widget-knight" type="button" aria-label="Knight automation trigger"
+                data-state="idle" data-animation="idle">
+                <img src="assets/characters/knight/animations/breathing-idle/south/frame_000.png" alt="Castle knight"
+                    class="knight-sprite" draggable="false">
+                <div class="knight-speech" aria-live="polite">
+                    <img src="assets/characters/knight/SpeechBubble.png" alt="Knight dialogue bubble" class="knight-speech-bubble" draggable="false">
+                    <span class="knight-speech-text" id="knight-speech-text">...</span>
+                </div>
+                <div class="knight-overlay" aria-hidden="true"></div>
+                <div class="knight-progress" aria-hidden="true">
+                    <span class="knight-progress-fill"></span>
+                </div>
+                <p class="knight-dialog" role="status"></p>
+            </button>
+            <form id="knight-incantation" class="knight-incantation" autocomplete="off">
+                <label for="knight-input">Ritterbefehl</label>
+                <div class="incantation-field">
+                    <input id="knight-input" type="text" maxlength="160" placeholder="Beschreibe die Mission..." aria-label="Knight command input">
+                    <button id="knight-cast" type="submit">Wirken</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <section id="settings-panel" class="settings-panel hidden" aria-label="Lively properties">
+        <header class="settings-header">
+            <div>
+                <h1>Wallpaper Settings</h1>
+                <p>Live view of all Lively properties and their values.</p>
+            </div>
+            <button id="settings-close" type="button" aria-label="Close settings">✕</button>
+        </header>
+        <div id="settings-content" class="settings-content">
+            <div class="settings-empty">Waiting for Lively to send properties…</div>
+              <div id="settings-list" class="settings-list"></div>
+        </div>
+    </section>
+
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>

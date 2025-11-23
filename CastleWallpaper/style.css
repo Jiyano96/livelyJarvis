@@ -1,0 +1,677 @@
+:root {
+    --mail-x: 22%;
+    --mail-y: 28%;
+    --mail-scale: 1.1;
+    --notes-x: 72%;
+    --notes-y: 22%;
+    --notes-scale: 0.7;
+    --settings-x: 88%;
+    --settings-y: 18%;
+    --settings-scale: 0.9;
+    --knight-x: 57%;
+    --knight-y: 70%;
+    --knight-scale: 1.1;
+    --widget-transition: 0.18s ease;
+    --panel-bg: rgba(8, 10, 22, 0.92);
+    --panel-border: rgba(164, 192, 255, 0.4);
+}
+
+@font-face {
+    font-family: "Minecraft";
+    src: url("Minecraft.ttf") format("truetype");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Minecraft", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #030712;
+    color: #fdf9f1;
+}
+
+#scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.scene-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(1.05);
+    image-rendering: pixelated;
+    z-index: 0;
+}
+
+#widgets-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.widget {
+    position: absolute;
+    pointer-events: auto;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    transition: transform var(--widget-transition), filter var(--widget-transition);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+}
+
+.widget:focus-visible {
+    outline: 2px solid #4adad9;
+    outline-offset: 4px;
+}
+
+.widget-mail {
+    left: var(--mail-x);
+    top: var(--mail-y);
+    transform: translate(-50%, -50%) scale(var(--mail-scale));
+}
+
+.settings-row label {
+    flex: 0 0 120px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #cdd6ff;
+    padding-right: 10px;
+}
+
+.settings-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-field input[type="text"],
+.settings-field input[type="url"],
+.settings-field input[type="number"],
+.settings-field textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #e9feff;
+    padding: 4px 6px;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.settings-field textarea {
+    min-height: 54px;
+    resize: vertical;
+}
+
+.settings-field input[type="range"] {
+    flex: 1;
+}
+
+.settings-field input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #00ffd5;
+}
+
+.settings-value {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    color: #20cff8;
+    min-width: 48px;
+    text-align: right;
+    font-size: 11px;
+}
+
+.widget-mail .mail-frame {
+    width: 98px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.widget-notes {
+    left: var(--notes-x);
+    top: var(--notes-y);
+    transform: translate(-50%, -50%) scale(var(--notes-scale));
+    pointer-events: auto;
+}
+
+.widget-notes {
+    cursor: default;
+    max-width: 220px;
+}
+
+.widget-notes .notes-art {
+    width: 160px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.55));
+}
+
+.notes-body {
+    width: 220px;
+    padding: 10px 12px;
+    background: rgba(7, 7, 14, 0.82);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+.widget-notes[data-state="loading"] .notes-body {
+    border-color: rgba(74, 218, 217, 0.9);
+    box-shadow: 0 0 16px rgba(74, 218, 217, 0.3);
+}
+
+.widget-notes[data-state="error"] .notes-body {
+    border-color: rgba(255, 92, 92, 0.9);
+    box-shadow: 0 0 16px rgba(255, 92, 92, 0.25);
+}
+
+.widget-notes[data-state="success"] .notes-body {
+    border-color: rgba(91, 255, 116, 0.9);
+}
+
+.notes-body label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+}
+
+#notes-input {
+    width: 100%;
+    min-height: 84px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 6px 8px;
+    color: #f3f3f3;
+    font-family: "Minecraft", "Courier New", monospace;
+    font-size: 11px;
+    resize: vertical;
+}
+
+#notes-input:focus-visible {
+    outline: 2px solid #4adad9;
+    outline-offset: 2px;
+}
+
+.notes-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+#notes-send {
+    flex: 1;
+    background: linear-gradient(120deg, #5c95ff, #8ee0ff);
+    border: none;
+    color: #05050a;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity var(--widget-transition);
+}
+
+#notes-send:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.note-hint {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.widget-settings {
+    left: var(--settings-x);
+    top: var(--settings-y);
+    transform: translate(-50%, -50%) scale(var(--settings-scale));
+}
+
+.widget-settings img {
+    width: 86px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.widget-knight {
+    left: var(--knight-x);
+    top: var(--knight-y);
+    transform: translate(-50%, -50%) scale(var(--knight-scale));
+    image-rendering: pixelated;
+    flex-direction: column;
+}
+
+.knight-sprite {
+    width: 128px;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
+}
+
+.widget-knight[data-animation="cast"] .knight-sprite {
+    filter: drop-shadow(0 0 10px rgba(76, 198, 255, 0.85));
+}
+
+.widget-knight[data-animation="victory"] .knight-sprite {
+    filter: drop-shadow(0 0 10px rgba(255, 226, 109, 0.9));
+}
+
+.widget-knight[data-animation="defeat"] .knight-sprite {
+    filter: drop-shadow(0 0 12px rgba(255, 107, 107, 0.9));
+    animation: knightDefeatShake 0.45s steps(2) 3;
+}
+
+.knight-overlay {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition: opacity var(--widget-transition);
+    pointer-events: none;
+}
+
+.widget-knight[data-state="loading"] .knight-overlay {
+    opacity: 0.8;
+    animation: pulse 0.9s linear infinite;
+}
+
+.widget-knight[data-animation="victory"] .knight-overlay {
+    opacity: 0.6;
+    background: radial-gradient(circle, rgba(255, 240, 174, 0.8) 0%, rgba(255, 214, 82, 0) 70%);
+    animation: knightVictoryAura 1.2s ease-in-out infinite;
+}
+
+.widget-knight[data-animation="defeat"] .knight-overlay {
+    opacity: 0.7;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.8) 0%, rgba(255, 31, 31, 0) 70%);
+    animation: knightDefeatAura 0.9s ease-in-out infinite;
+}
+
+.knight-progress {
+    position: absolute;
+    bottom: -18px;
+    width: 150px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transition: opacity var(--widget-transition);
+}
+
+.knight-speech {
+    position: absolute;
+    top: -160px;
+    left: 90%;
+    transform: translateX(-40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    pointer-events: none;
+}
+
+.knight-speech-bubble {
+    width: 300px;
+    height: 260px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+}
+
+.knight-speech-text {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72%;
+    font-family: "Minecraft", "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #171717;
+    text-transform: none;
+    padding: 2px 0;
+    text-align: center;
+    letter-spacing: 0.2px;
+    word-break: break-word;
+}
+
+.knight-incantation {
+    position: absolute;
+    left: calc(var(--knight-x) + 9%);
+    top: calc(var(--knight-y) + 6%);
+    transform: translate(-8%, -35%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(12, 14, 32, 0.88), rgba(28, 34, 74, 0.75));
+    border: 1px solid rgba(140, 176, 255, 0.6);
+    border-radius: 14px;
+    padding: 14px 16px;
+    width: min(300px, 65vw);
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+    z-index: 2;
+}
+
+.knight-incantation label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #d7e0ff;
+}
+
+.incantation-field {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+#knight-input {
+    flex: 1;
+    background: rgba(2, 7, 26, 0.7);
+    border: 1px solid rgba(116, 166, 255, 0.45);
+    border-radius: 10px;
+    color: #f9fbff;
+    padding: 10px 12px;
+    font-family: "Minecraft", "Courier New", monospace;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    box-shadow: inset 0 0 12px rgba(12, 24, 64, 0.65);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#knight-input:focus-visible {
+    outline: none;
+    border-color: #66f4ff;
+    box-shadow: 0 0 8px rgba(102, 244, 255, 0.5), inset 0 0 12px rgba(12, 24, 64, 0.4);
+}
+
+#knight-input::placeholder {
+    color: rgba(227, 233, 255, 0.55);
+}
+
+#knight-cast {
+    background: linear-gradient(140deg, #ffe08f, #ffb25c 65%, #ff9b42);
+    border: none;
+    color: #2c1504;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 10px 18px rgba(255, 159, 67, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+#knight-cast:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#knight-cast:not(:disabled):hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 12px 22px rgba(255, 159, 67, 0.45);
+}
+
+#knight-cast:not(:disabled):active {
+    transform: translateY(1px) scale(0.99);
+    filter: brightness(0.98);
+}
+
+.knight-progress-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #49ffc4, #4ab2ff);
+    transition: width 0.2s ease;
+}
+
+.widget-knight[data-state="loading"] .knight-progress,
+.widget-knight[data-state="success"] .knight-progress,
+.widget-knight[data-state="error"] .knight-progress {
+    opacity: 1;
+}
+
+.knight-dialog {
+    position: absolute;
+    top: -120px;
+    width: 200px;
+    padding: 10px 12px;
+    background: #fff8e1;
+    border: 3px solid #2d1b0f;
+    border-radius: 10px;
+    color: #130c06;
+    font-family: "Minecraft", "Courier New", monospace;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.knight-dialog::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #fff8e1;
+    border-left: 3px solid #2d1b0f;
+    border-bottom: 3px solid #2d1b0f;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.knight-dialog.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes knightVictoryAura {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(0.85);
+        opacity: 0.25;
+    }
+}
+
+@keyframes knightDefeatShake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes knightDefeatAura {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+}
+
+.settings-panel {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    width: min(380px, calc(100% - 48px));
+    max-height: calc(100% - 48px);
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+    z-index: 5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.settings-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.settings-header h1 {
+    font-size: 18px;
+    margin: 0 0 4px;
+}
+
+.settings-header p {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#settings-close {
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.settings-content {
+    padding: 14px 20px;
+    overflow: auto;
+}
+
+.settings-empty {
+    padding: 10px 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+@media (max-width: 960px) {
+    .knight-incantation {
+        left: var(--knight-x);
+        top: calc(var(--knight-y) + 10%);
+        transform: translate(-50%, -50%);
+        width: min(280px, 80vw);
+    }
+}
+
+@media (max-width: 720px) {
+    .widget-notes {
+        transform: translate(-50%, -50%) scale(var(--notes-scale) * 0.85);
+    }
+
+    .widget-mail .mail-frame {
+        width: 72px;
+    }
+
+    .widget-settings img {
+        width: 64px;
+    }
+
+    .knight-sprite {
+        width: 96px;
+    }
+}

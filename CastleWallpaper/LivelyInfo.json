@@ -1,0 +1,14 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "Castle Automations",
+  "Thumbnail": "assets/castlebg.png",
+  "Preview": "assets/castlebg.png",
+  "Desc": "Pixel castle control board that triggers n8n automations with mail, notes, and knight widgets.",
+  "Author": "User",
+  "License": "",
+  "Contact": "",
+  "Type": "web",
+  "FileName": "index.html",
+  "Arguments": "",
+  "IsAbsolutePath": false
+}
